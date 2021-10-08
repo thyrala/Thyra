@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+
+import argparse
+import instapy
+import cv2
+
+parser = argparse.ArgumentParser(description='Add filter to images')
+group = parser.add_mutually_exclusive_group(required = True)
+
+parser.add_argument('-f', '--file', action = 'store', dest = 'file', required = True, help = 'The file name of file to apply filter to.')
+group.add_argument('-se', '--sepia', action = 'store_true', help = 'Select sepia filter. (default numba)')
+group.add_argument('-g', '--gray', action = 'store_true', help = 'Select gray filter. (default numba)')
+
+parser.add_argument('-sc SCALE', '--scale SCALE', action = 'store', dest = 'scale', help = 'Scale factor to resize image.')
+parser.add_argument('-i {python, numba, numpy}', '--implement {python, numba, numpy}', action = 'store', dest = 'implement', help = 'Choose the implementation. (python, numba or numpy)')
+parser.add_argument('-o OUT', '--out OUT', action = 'store', dest = 'output', help = 'The output filename')
+args = parser.parse_args()
+
+def grayscale_image(input_filename, output_filename=None, implementation = None, scale = None):
+    if (implementation == "python"):
+        grayscale = instapy.python_color2gray(input_filename)
+    elif (implementation == "numpy"):
+        grayscale = instapy.numpy_color2gray(input_filename)
+    else:
+        grayscale = instapy.numba_color2gray(input_filename)
+
+    if (output_filename == None):
+        output_filename = str(input_filename.split("/")[-1])
+    
+    if (scale != None):
+        grayscale = cv2.resize(grayscale, (0, 0), fx = scale, fy = scale)
+    
+    if not cv2.imwrite(str(output_filename), grayscale):
+        raise Exception("Could not save image.")
+
+    return grayscale
+
+def sepia_image(input_filename, output_filename=None, implementation = None, scale = None):
+    if (implementation == "python"):
+        sepia = instapy.python_color2sepia(input_filename)
+    elif (implementation == "numpy"):
+        sepia = instapy.numpy_color2sepia(input_filename)
+    else:
+        sepia = instapy.numba_color2sepia(input_filename)
+        
+    if (output_filename == None):
+        output_filename = str(input_filename.split("/")[-1])
+    
+    if (scale != None):
+        sepia = cv2.resize(sepia, (0, 0), fx = scale, fy = scale)
+
+    if not cv2.imwrite(str(output_filename), sepia):
+        raise Exception("Could not save image.")
+
+    return sepia
+
+if (args.gray):
+    grayscale_image(args.file, args.output, args.implement, args.scale)
+
+if (args.sepia):
+    sepia_image(args.file, args.output, args.implement, args.scale)

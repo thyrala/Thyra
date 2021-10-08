@@ -1,0 +1,8 @@
+Dimensions of rain.jpeg: (400, 600, 3)
+Timing: numpy_color2gray
+Avrage runtime running numpy_color2gray after 3 runs: 0.02477 s
+Average runtime for running numpy_color2gray.py is 26.8757 times
+    faster than python_color2gray.py.
+Timing preformed using: time.time()
+
+

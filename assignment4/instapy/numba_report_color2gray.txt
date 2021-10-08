@@ -1,0 +1,10 @@
+Dimensions of rain.jpeg: (400, 600, 3)
+Timing: numpy_color2gray
+Average runtime running numba_color2gray.py after 3 runs: 0.00815 s
+Average runtime for running numba_color2gray.py is 81.6933 times
+    faster than python_color2gray.py.
+Average runtime for running numba_color2gray.py is 3.03929 times 
+    faster than numpy_color2gray.py.
+Timing preformed using: time.time()
+
+
