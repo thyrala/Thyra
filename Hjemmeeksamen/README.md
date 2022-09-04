@@ -1,5 +1,5 @@
 # Midtveiseksamen IN2140 V21
-I dette prosjektet skulle vi lage en server-klient-tjeneste der klienter kunne koble seg opp til en server for å hente/bli tilsendt filer. Vi opprettet et nytt transportlag, Reliable Datagram Protocol (RDP), som tilbyr multipleksing og pålitelighet.
+I dette prosjektet skulle vi lage en server-klient-tjeneste der klienter kunne koble seg opp til en server for å hente/bli tilsendt filer. Vi opprettet et nytt transportlag, Reliable Datagram Protocol (RDP), som skulle tilby multipleksing og pålitelighet.
 
 Hele oppgaven er inspirert av filtjenesteprotokollen FSP, som overfører store filer (som en operativsystemkjerne) over UDP.
 
