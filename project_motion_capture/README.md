@@ -1,6 +1,6 @@
-# Game controller framework using hand genstures - Candidate number 176
+# Game controller framework using hand genstures
 
-This project proposes a framework for a game controller that is using hand gestures as input. Code languege is Python, and the code is mainly tested in Python 3.9.0. 
+This project proposes a framework for a game controller that is using hand gestures as input. Code languege is Python, and the code is mainly tested in Python 3.9.0, but does also work for Python 3.11.4.
 
 The code is capable of detecting four different gestures; "Standing still", "Jump", "Kick" and "Walk", these are preformed as shown in the pictures stand_still.jpg, jump.jpg, kick.jpg and walk.jpg.
 
